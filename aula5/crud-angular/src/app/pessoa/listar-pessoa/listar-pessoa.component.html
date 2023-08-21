@@ -1,0 +1,29 @@
+<h1>Pessoas</h1>
+
+<table class="table table-striped table-bordered table-hover">
+    <tbody>
+        <tr>
+            <th>Nome</th>
+            <th>Idade</th>
+            <th class="text-center">
+                <a [routerLink]="['/pessoas/novo']" href="#" title="Novo" alt="Novo" class="btn btn-xs btn-success">
+                    <i class="fa fa-plus"></i> Novo
+                </a>
+            </th>
+        </tr>
+        <tr *ngFor="let pessoa of pessoas">
+            <td>{{pessoa.nome}}</td>
+            <td>{{pessoa.idade}}</td>
+            <td class="text-center" style="width: 300px">
+                <a href="#" title="Editar" class="btn btn-xs btn-info" [routerLink]="['/pessoas/editar', pessoa.id]">
+                    <i class="fa fa-edit"></i> Editar
+                </a>
+                <a href="#" title="Remover" class="btn btn-xs btn-danger" (click)="remover($event, pessoa)">
+                    <i class="fa fa-times"></i> Remover
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<p *ngIf="pessoas.length == 0">Nenhuma pessoa cadastrada.</p>
